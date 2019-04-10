@@ -39,7 +39,7 @@ class IntegerHandler extends Handler[Int] {
   override def handle(t: Int): Int = {
     val result = t*t
     TimeUnit.SECONDS.sleep(t)
-    logger.info(s"[${Thread.currentThread().getName}]${getClass.getSimpleName} handled ${t}, returned ${result}")
+    logger.info(s"[${Thread.currentThread().getName}]${getClass.getSimpleName}:${this.toString} handled ${t}, returned ${result}")
     result
   }
 }
