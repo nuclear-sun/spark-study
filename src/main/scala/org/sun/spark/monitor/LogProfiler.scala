@@ -26,4 +26,13 @@ class LogProfiler(prefix: String) extends Profiler {
     //logger.info(s"[${Thread.currentThread().getName}]${getClass.getSimpleName} ${prefix} elapse: ${stopTime - lastTime.get()}")
     logger.info(s"[${Thread.currentThread().getName}]${getClass.getSimpleName} ${prefix} elapse: ${stopTime - preTime}")
   }
+
+  def watch[T](expr: => T): T = {
+    start()
+    try {
+      expr
+    } finally {
+      stop()
+    }
+  }
 }
